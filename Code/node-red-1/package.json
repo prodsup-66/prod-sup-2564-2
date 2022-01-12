@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node-red -u . -p 1880"
+    "start": "npx node-red -u ./local -p 1880"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^11.0.0",
+    "node-red": "^2.1.4",
+    "node-red-contrib-cloud-firestore": "^3.1.0",
     "node-red-dashboard": "~3.1.3"
   }
 }

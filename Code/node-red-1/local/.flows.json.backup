@@ -40,6 +40,22 @@
         "env": []
     },
     {
+        "id": "9cab3d86bb384ee4",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e80d5bb4a04c9975",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "0e464c3096fa78b4",
         "type": "ui_tab",
         "name": "Home",
@@ -179,6 +195,11 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
+    },
+    {
+        "id": "e69e69a9959692c8",
+        "type": "firebase admin",
+        "name": "Adjusted"
     },
     {
         "id": "23d83776dbd6058f",
@@ -807,34 +828,6 @@
         ]
     },
     {
-        "id": "60339b1e14b36b7d",
-        "type": "inject",
-        "z": "dedfba256312356e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "headers",
-                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer KuF1tHeA5XeIC6jvv3a0fePJwCTfOKhKRJNqydnQzmo\"}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"message\":\"Hello\"}",
-        "payloadType": "json",
-        "x": 230,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "4b6f65dd04ac59f0",
         "type": "http request",
         "z": "dedfba256312356e",
@@ -889,6 +882,204 @@
             [
                 "bbea1c5358e2c6c0",
                 "4b6f65dd04ac59f0"
+            ]
+        ]
+    },
+    {
+        "id": "2e2c5b29411b1191",
+        "type": "inject",
+        "z": "9cab3d86bb384ee4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "LINE",
+        "payloadType": "env",
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "ddbd2ad8e14cc9a6"
+            ]
+        ]
+    },
+    {
+        "id": "ddbd2ad8e14cc9a6",
+        "type": "debug",
+        "z": "9cab3d86bb384ee4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "cd5770bc81803a34",
+        "type": "debug",
+        "z": "e80d5bb4a04c9975",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "0ab0ba3cf3280e79",
+        "type": "Firestore in",
+        "z": "e80d5bb4a04c9975",
+        "name": "Read",
+        "collection": "incident",
+        "group": false,
+        "document": "",
+        "realtime": true,
+        "query": [
+            {
+                "orderBy": {
+                    "field": "timestamp",
+                    "direction": "desc"
+                }
+            },
+            {
+                "limit": 10
+            }
+        ],
+        "admin": "e69e69a9959692c8",
+        "snapHandler": "",
+        "eject": false,
+        "x": 710,
+        "y": 380,
+        "wires": [
+            [
+                "f87ad3650245326b"
+            ]
+        ]
+    },
+    {
+        "id": "5df5c4e6cfbb7999",
+        "type": "inject",
+        "z": "e80d5bb4a04c9975",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "firestore",
+                "v": "{\"document\":\"1234\"}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 460,
+        "y": 480,
+        "wires": [
+            [
+                "62567ed060928356"
+            ]
+        ]
+    },
+    {
+        "id": "5ceee284919488f6",
+        "type": "Firestore out",
+        "z": "e80d5bb4a04c9975",
+        "name": "Write",
+        "collection": "incident",
+        "document": "test",
+        "operation": "set",
+        "admin": "e69e69a9959692c8",
+        "eject": false,
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "62567ed060928356",
+        "type": "function",
+        "z": "e80d5bb4a04c9975",
+        "name": "",
+        "func": "const timestamp = msg.payload\nconst date = new Date();\nconst dateString = date.toISOString();\n\nmsg.payload = {timestamp:timestamp,  value: Math.random()}\nmsg.firestore = {\"document\": dateString}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 540,
+        "wires": [
+            [
+                "5ceee284919488f6"
+            ]
+        ]
+    },
+    {
+        "id": "d7a206d8d8bb7e96",
+        "type": "ui_text",
+        "z": "e80d5bb4a04c9975",
+        "group": "c07a1508a4bce39c",
+        "order": 1,
+        "width": "5",
+        "height": "9",
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1180,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "f87ad3650245326b",
+        "type": "function",
+        "z": "e80d5bb4a04c9975",
+        "name": "",
+        "func": "let payload = msg.payload\nlet textOut = ''\n\nfor (const [key, value] of Object.entries(payload)) {\n    const date = new Date(value.timestamp)\n    const datestring = date.toLocaleDateString()\n    const timestring = date.toLocaleTimeString()\n    const reading = value.value.toFixed(2)\n    \n    \n    textOut += `${datestring} ${timestring}: ${reading} \\n`\n    \n    \n}\n\nconsole.log(textOut)\n\n\nmsg.payload = textOut;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 260,
+        "wires": [
+            [
+                "cd5770bc81803a34",
+                "d7a206d8d8bb7e96"
             ]
         ]
     }
