@@ -34,7 +34,7 @@
     {
         "id": "dedfba256312356e",
         "type": "tab",
-        "label": "MQTT",
+        "label": "Project",
         "disabled": false,
         "info": "",
         "env": []
@@ -42,7 +42,7 @@
     {
         "id": "9cab3d86bb384ee4",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Environment Variable",
         "disabled": false,
         "info": "",
         "env": []
@@ -50,7 +50,7 @@
     {
         "id": "e80d5bb4a04c9975",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Firestore",
         "disabled": false,
         "info": "",
         "env": []
@@ -58,8 +58,9 @@
     {
         "id": "0e464c3096fa78b4",
         "type": "ui_tab",
-        "name": "Home",
+        "name": "Dashboard",
         "icon": "dashboard",
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -72,7 +73,8 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "darkTheme": {
                 "default": "#097479",
@@ -141,10 +143,10 @@
             }
         },
         "site": {
-            "name": "Node-RED Dashboard",
+            "name": "My Dashboard",
             "hideToolbar": "false",
             "allowSwipe": "false",
-            "lockMenu": "false",
+            "lockMenu": "true",
             "allowTempTheme": "true",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
@@ -158,17 +160,6 @@
                 "py": 0
             }
         }
-    },
-    {
-        "id": "c07a1508a4bce39c",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "0e464c3096fa78b4",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "5d3245bfbfc17903",
@@ -200,6 +191,37 @@
         "id": "e69e69a9959692c8",
         "type": "firebase admin",
         "name": "Adjusted"
+    },
+    {
+        "id": "c07a1508a4bce39c",
+        "type": "ui_group",
+        "name": "Incident",
+        "tab": "0e464c3096fa78b4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3d0aa13f66c8b8c4",
+        "type": "ui_tab",
+        "name": "Control",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "871c51e643532b28",
+        "type": "ui_group",
+        "name": "Light",
+        "tab": "3d0aa13f66c8b8c4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "23d83776dbd6058f",
@@ -637,8 +659,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 160,
+        "x": 70,
+        "y": 240,
         "wires": [
             [
                 "bb4587fc0df90697"
@@ -652,8 +674,8 @@
         "name": "HTML",
         "statusCode": "",
         "headers": {},
-        "x": 410,
-        "y": 200,
+        "x": 510,
+        "y": 280,
         "wires": []
     },
     {
@@ -668,8 +690,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 410,
-        "y": 100,
+        "x": 530,
+        "y": 180,
         "wires": []
     },
     {
@@ -697,7 +719,7 @@
         "type": "mqtt in",
         "z": "dedfba256312356e",
         "name": "",
-        "topic": "test",
+        "topic": "nnnpooh/sensors",
         "qos": "2",
         "datatype": "auto",
         "broker": "5d3245bfbfc17903",
@@ -705,8 +727,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 320,
-        "y": 160,
+        "x": 120,
+        "y": 140,
         "wires": [
             [
                 "b55c57ca76abe546"
@@ -714,58 +736,25 @@
         ]
     },
     {
-        "id": "e8b42f37c0225196",
-        "type": "ui_text",
-        "z": "dedfba256312356e",
-        "group": "c07a1508a4bce39c",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "text",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 730,
-        "y": 120,
-        "wires": []
-    },
-    {
         "id": "b55c57ca76abe546",
         "type": "function",
         "z": "dedfba256312356e",
         "name": "",
-        "func": "\n\nconst payloadJSON =  JSON.parse(msg.payload);\nconst values = payloadJSON['LSM6DSO Acceleration Sensor'].values\n\nconst norm = Math.sqrt( values[0]**2 + values[1]**2 + values[2]**2)\nmsg.payload = norm\n\n\nconsole.log(norm)\nreturn msg;",
+        "func": "const payloadJSON =  JSON.parse(msg.payload);\nconst values = payloadJSON['LSM6DSO Acceleration Sensor'].values\nconst norm = Math.sqrt( values[0]**2 + values[1]**2 + values[2]**2)\nmsg.payload = norm\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 240,
+        "x": 360,
+        "y": 140,
         "wires": [
             [
-                "e8b42f37c0225196",
-                "a140fb6ad9eac996"
+                "a140fb6ad9eac996",
+                "76ba1718164872ee",
+                "d067b62bb4ed888b"
             ]
         ]
-    },
-    {
-        "id": "bbea1c5358e2c6c0",
-        "type": "debug",
-        "z": "dedfba256312356e",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "b59304987ee4f56b",
@@ -788,8 +777,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 270,
-        "y": 320,
+        "x": 120,
+        "y": 240,
         "wires": [
             [
                 "b55c57ca76abe546"
@@ -818,11 +807,12 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 450,
-        "y": 380,
+        "x": 530,
+        "y": 140,
         "wires": [
             [
-                "90ea110c514838e4"
+                "90ea110c514838e4",
+                "23a030ece1edb17e"
             ],
             []
         ]
@@ -841,8 +831,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 580,
-        "y": 580,
+        "x": 890,
+        "y": 140,
         "wires": [
             [
                 "0dc3e17b2962ebe4"
@@ -861,8 +851,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 640,
+        "x": 1090,
+        "y": 140,
         "wires": []
     },
     {
@@ -870,20 +860,332 @@
         "type": "function",
         "z": "dedfba256312356e",
         "name": "",
-        "func": "msg.payload = {\n    \nmessage: `Value is ${msg.payload}`    \n}\n\n\nmsg.headers = {\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer KuF1tHeA5XeIC6jvv3a0fePJwCTfOKhKRJNqydnQzmo\"}\nreturn msg;",
+        "func": "console.log(msg)\nconst date = new Date()\nconst datestring = date.toLocaleDateString()\nconst timestring = date.toLocaleTimeString()\n    \n    \nmsg.payload = {\n    message: `${datestring} ${timestring}\\nValue: ${msg.payload.toFixed(2)}`    \n}\n\nconst auth = `Bearer ${env.get(\"LINE_NOTIFY_TOKEN\")}`\nmsg.headers = {\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": auth}\n\nconsole.log(msg)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 460,
+        "x": 700,
+        "y": 140,
         "wires": [
             [
-                "bbea1c5358e2c6c0",
                 "4b6f65dd04ac59f0"
             ]
         ]
+    },
+    {
+        "id": "82b0fb85ea7581c8",
+        "type": "debug",
+        "z": "dedfba256312356e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "2294d76429384be1",
+        "type": "Firestore in",
+        "z": "dedfba256312356e",
+        "name": "Read",
+        "collection": "incident",
+        "group": false,
+        "document": "",
+        "realtime": true,
+        "query": [
+            {
+                "orderBy": {
+                    "field": "timestamp",
+                    "direction": "desc"
+                }
+            },
+            {
+                "limit": 10
+            }
+        ],
+        "admin": "e69e69a9959692c8",
+        "snapHandler": "",
+        "eject": false,
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "47e5b174c1279601"
+            ]
+        ]
+    },
+    {
+        "id": "bfc060f6da0d2c64",
+        "type": "Firestore out",
+        "z": "dedfba256312356e",
+        "name": "Write",
+        "collection": "incident",
+        "document": "test",
+        "operation": "set",
+        "admin": "e69e69a9959692c8",
+        "eject": false,
+        "x": 950,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "23a030ece1edb17e",
+        "type": "function",
+        "z": "dedfba256312356e",
+        "name": "",
+        "func": "const val = msg.payload\nconst now = new Date()\nconst timestamp = now.getTime()\nconst dateString = now.toISOString();\nmsg.payload = {timestamp:timestamp,  value: val}\nmsg.firestore = {\"document\": dateString}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 240,
+        "wires": [
+            [
+                "bfc060f6da0d2c64"
+            ]
+        ]
+    },
+    {
+        "id": "3183c3978a7f15b0",
+        "type": "ui_text",
+        "z": "dedfba256312356e",
+        "group": "c07a1508a4bce39c",
+        "order": 3,
+        "width": "6",
+        "height": "5",
+        "name": "",
+        "label": "Last 10 Incidents",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 790,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "47e5b174c1279601",
+        "type": "function",
+        "z": "dedfba256312356e",
+        "name": "",
+        "func": "let payload = msg.payload\nlet textOut = ''\n\nfor (const [key, value] of Object.entries(payload)) {\n    const date = new Date(value.timestamp)\n    const datestring = date.toLocaleDateString()\n    const timestring = date.toLocaleTimeString()\n    const reading = value.value.toFixed(2)\n    textOut += `${datestring} ${timestring}: ${reading} \\n`\n}\n\nmsg.payload = textOut;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "82b0fb85ea7581c8",
+                "3183c3978a7f15b0"
+            ]
+        ]
+    },
+    {
+        "id": "be61f758f671d229",
+        "type": "comment",
+        "z": "dedfba256312356e",
+        "name": "Receiving sensor data",
+        "info": "MQTT",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "76ba1718164872ee",
+        "type": "ui_chart",
+        "z": "dedfba256312356e",
+        "name": "",
+        "group": "c07a1508a4bce39c",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d067b62bb4ed888b",
+        "type": "ui_gauge",
+        "z": "dedfba256312356e",
+        "name": "",
+        "group": "c07a1508a4bce39c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "8",
+        "max": "20",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 550,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1b26f81987873089",
+        "type": "mqtt out",
+        "z": "dedfba256312356e",
+        "name": "",
+        "topic": "nnnpooh/light",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5d3245bfbfc17903",
+        "x": 440,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "cebae9bbd16461d0",
+        "type": "ui_button",
+        "z": "dedfba256312356e",
+        "name": "",
+        "group": "871c51e643532b28",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Light On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "orange",
+        "className": "",
+        "icon": "",
+        "payload": "torch_on",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 660,
+        "wires": [
+            [
+                "1b26f81987873089",
+                "e72fcf8e3a0ec588"
+            ]
+        ]
+    },
+    {
+        "id": "079370b1b43d42d2",
+        "type": "ui_button",
+        "z": "dedfba256312356e",
+        "name": "",
+        "group": "871c51e643532b28",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Light Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "gray",
+        "className": "",
+        "icon": "",
+        "payload": "torch_off",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 740,
+        "wires": [
+            [
+                "1b26f81987873089",
+                "e72fcf8e3a0ec588"
+            ]
+        ]
+    },
+    {
+        "id": "e72fcf8e3a0ec588",
+        "type": "debug",
+        "z": "dedfba256312356e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "ae4368b087918d14",
+        "type": "comment",
+        "z": "dedfba256312356e",
+        "name": "Display data from Firebase",
+        "info": "MQTT",
+        "x": 170,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f2f8bdf9678dcd5c",
+        "type": "comment",
+        "z": "dedfba256312356e",
+        "name": "Controlling light",
+        "info": "MQTT",
+        "x": 140,
+        "y": 580,
+        "wires": []
     },
     {
         "id": "2e2c5b29411b1191",
@@ -906,8 +1208,8 @@
         "topic": "",
         "payload": "LINE",
         "payloadType": "env",
-        "x": 390,
-        "y": 200,
+        "x": 450,
+        "y": 220,
         "wires": [
             [
                 "ddbd2ad8e14cc9a6"
@@ -943,14 +1245,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1150,
-        "y": 400,
+        "x": 930,
+        "y": 280,
         "wires": []
     },
     {
         "id": "0ab0ba3cf3280e79",
         "type": "Firestore in",
         "z": "e80d5bb4a04c9975",
+        "d": true,
         "name": "Read",
         "collection": "incident",
         "group": false,
@@ -970,8 +1273,8 @@
         "admin": "e69e69a9959692c8",
         "snapHandler": "",
         "eject": false,
-        "x": 710,
-        "y": 380,
+        "x": 450,
+        "y": 280,
         "wires": [
             [
                 "f87ad3650245326b"
@@ -1003,8 +1306,8 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 480,
+        "x": 440,
+        "y": 380,
         "wires": [
             [
                 "62567ed060928356"
@@ -1015,14 +1318,15 @@
         "id": "5ceee284919488f6",
         "type": "Firestore out",
         "z": "e80d5bb4a04c9975",
+        "d": true,
         "name": "Write",
         "collection": "incident",
         "document": "test",
         "operation": "set",
         "admin": "e69e69a9959692c8",
         "eject": false,
-        "x": 1010,
-        "y": 500,
+        "x": 930,
+        "y": 380,
         "wires": [
             []
         ]
@@ -1038,8 +1342,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 540,
+        "x": 680,
+        "y": 380,
         "wires": [
             [
                 "5ceee284919488f6"
@@ -1047,39 +1351,21 @@
         ]
     },
     {
-        "id": "d7a206d8d8bb7e96",
-        "type": "ui_text",
-        "z": "e80d5bb4a04c9975",
-        "group": "c07a1508a4bce39c",
-        "order": 1,
-        "width": "5",
-        "height": "9",
-        "name": "",
-        "label": "text",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "x": 1180,
-        "y": 300,
-        "wires": []
-    },
-    {
         "id": "f87ad3650245326b",
         "type": "function",
         "z": "e80d5bb4a04c9975",
         "name": "",
-        "func": "let payload = msg.payload\nlet textOut = ''\n\nfor (const [key, value] of Object.entries(payload)) {\n    const date = new Date(value.timestamp)\n    const datestring = date.toLocaleDateString()\n    const timestring = date.toLocaleTimeString()\n    const reading = value.value.toFixed(2)\n    \n    \n    textOut += `${datestring} ${timestring}: ${reading} \\n`\n    \n    \n}\n\nconsole.log(textOut)\n\n\nmsg.payload = textOut;\nreturn msg;",
+        "func": "let payload = msg.payload\nlet textOut = ''\n\nfor (const [key, value] of Object.entries(payload)) {\n    const date = new Date(value.timestamp)\n    const datestring = date.toLocaleDateString()\n    const timestring = date.toLocaleTimeString()\n    const reading = value.value.toFixed(2)\n    \n    \n    textOut += `${datestring} ${timestring}: ${reading} \\n`\n    \n    \n}\n\n\nmsg.payload = textOut;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 960,
-        "y": 260,
+        "x": 700,
+        "y": 280,
         "wires": [
             [
-                "cd5770bc81803a34",
-                "d7a206d8d8bb7e96"
+                "cd5770bc81803a34"
             ]
         ]
     }
