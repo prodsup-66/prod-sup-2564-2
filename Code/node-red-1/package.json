@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^11.0.0",
+    "json-stringify-cli": "^1.0.1",
     "node-red": "^2.1.4",
     "node-red-contrib-cloud-firestore": "^3.1.0",
     "node-red-dashboard": "~3.1.3"
