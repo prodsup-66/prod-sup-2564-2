@@ -1,13 +1,16 @@
 {
-  "name": "node-red-2",
+  "name": "red-2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node-red -u . -p 1881"
+    "start": "npx node-red -u ./local -p 1880"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-red": "^2.1.5"
+  }
 }
