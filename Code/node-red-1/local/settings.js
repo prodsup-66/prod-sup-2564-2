@@ -21,9 +21,9 @@
  **/
 
 // Nirand: Add env variables
-require("dotenv").config();
-var serviceAccount = require("../environment/adjusted-age-calc-firebase-adminsdk.json");
-process.env.firebaseServiceAccount = JSON.stringify(serviceAccount);
+require('dotenv').config();
+// var serviceAccount = require("../environment/adjusted-age-calc-firebase-adminsdk.json");
+// process.env.firebaseServiceAccount = JSON.stringify(serviceAccount);
 
 module.exports = {
   /*******************************************************************************
@@ -36,7 +36,7 @@ module.exports = {
    ******************************************************************************/
 
   /** The file containing the flows. If not set, defaults to flows_<hostname>.json **/
-  flowFile: "flows.json",
+  flowFile: 'flows.json',
 
   /** By default, credentials are encrypted in storage using a generated key. To
    * specify your own secret, set the following property.
@@ -78,13 +78,13 @@ module.exports = {
    * property can be used. See http://nodered.org/docs/security.html for details.
    */
   adminAuth: {
-    type: "credentials",
+    type: 'credentials',
     users: [
       {
-        username: "admin",
+        username: 'admin',
         password:
-          "$2b$08$LTSJ.a4Rx9BCRhaxBTO9GePYKOpk47b5qBE78P125yVSR0u2m4G26",
-        permissions: "*",
+          '$2b$08$LTSJ.a4Rx9BCRhaxBTO9GePYKOpk47b5qBE78P125yVSR0u2m4G26',
+        permissions: '*',
       },
     ],
   },
@@ -255,7 +255,7 @@ module.exports = {
        * trace - record very detailed logging + debug + info + warn + error + fatal errors
        * off - turn off all logging (doesn't affect metrics or audit)
        */
-      level: "info",
+      level: 'info',
       /** Whether or not to include metric events in the log output */
       metrics: false,
       /** Whether or not to include audit events in the log output */
@@ -351,14 +351,14 @@ module.exports = {
          * This can be overridden per-user from the 'Git config'
          * section of 'User Settings' within the editor
          */
-        mode: "manual",
+        mode: 'manual',
       },
     },
     codeEditor: {
       /** Select the text editor component used by the editor.
        * Defaults to "ace", but can be set to "ace" or "monaco"
        */
-      lib: "ace",
+      lib: 'ace',
       options: {
         /** The follow options only apply if the editor is set to "monaco"
          *
@@ -366,7 +366,7 @@ module.exports = {
          * packages/node_modules/@node-red/editor-client/src/vendor/monaco/dist/theme
          * e.g. "tomorrow-night", "upstream-sunburst", "github", "my-theme"
          */
-        theme: "vs",
+        theme: 'vs',
         /** other overrides can be set e.g. fontSize, fontFamily, fontLigatures etc.
          * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.istandaloneeditorconstructionoptions.html
          */
