@@ -154,9 +154,7 @@
             "d834ad21bd37ea96"
         ],
         "x": 34,
-        "y": 19,
-        "w": 772,
-        "h": 302
+        "y": 19
     },
     {
         "id": "fc089742b7a03c9a",
@@ -182,9 +180,7 @@
             "2662dd203444845c"
         ],
         "x": 34,
-        "y": 379,
-        "w": 632,
-        "h": 262
+        "y": 379
     },
     {
         "id": "9e71dda4f602f907",
@@ -1326,7 +1322,7 @@
             },
             {
                 "p": "headers",
-                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer KuF1tHeA5XeIC6jvv3a0fePJwCTfOKhKRJNqydnQzmo\"}",
+                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer E0ypwB3Xn6IG91HKx7sTRCxrIkVOnq3HgMc6EkOES1K\"}",
                 "vt": "json"
             }
         ],
@@ -1902,6 +1898,58 @@
         "x": 720,
         "y": 220,
         "wires": []
+    },
+    {
+        "id": "19bfefcd380a4bac",
+        "type": "inject",
+        "z": "9cab3d86bb384ee4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "headers",
+                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer <<YOUR LINE TOKEN>>\"}",
+                "vt": "json"
+            },
+            {
+                "p": "Test",
+                "v": "LINE_NOTIFY_TOKEN2",
+                "vt": "env"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"message\":\"Hello\"}",
+        "payloadType": "json",
+        "x": 450,
+        "y": 320,
+        "wires": [
+            [
+                "1c4b6473ef7f4712"
+            ]
+        ]
+    },
+    {
+        "id": "1c4b6473ef7f4712",
+        "type": "function",
+        "z": "9cab3d86bb384ee4",
+        "name": "",
+        "func": "msg.headers.Authorization = `Bearer ${env.get('LINE_NOTIFY_TOKEN2')}`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 320,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "cd5770bc81803a34",
