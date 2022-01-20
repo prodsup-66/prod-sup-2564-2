@@ -500,7 +500,7 @@
         "z": "1252c8c9df17633c",
         "g": "cb24e92275a1331f",
         "name": "Format Date",
-        "func": "const payload = msg.payload\nconst date = new Date(payload)\nconst dateString = date.toLocaleDateString()\nconst timeString = date.toLocaleTimeString()\n// msg.payload = dateString\n// msg.payload = timeString\nmsg.payload = dateString + ' ' + timeString\nreturn msg;",
+        "func": "const payload = msg.payload;\nconst date = new Date(payload);\nmsg.payload = date.toDateString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1374,60 +1374,6 @@
         "x": 670,
         "y": 100,
         "wires": []
-    },
-    {
-        "id": "e3929501dda2a4a6",
-        "type": "inject",
-        "z": "3049115b8d3d971d",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "headers",
-                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer <<YOUR LINE TOKEN>>\"}",
-                "vt": "json"
-            },
-            {
-                "p": "Test",
-                "v": "LINE_NOTIFY_TOKEN2",
-                "vt": "env"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"message\":\"Hello\"}",
-        "payloadType": "json",
-        "x": 150,
-        "y": 220,
-        "wires": [
-            [
-                "a9c2629c1085019a"
-            ]
-        ]
-    },
-    {
-        "id": "a9c2629c1085019a",
-        "type": "function",
-        "z": "3049115b8d3d971d",
-        "name": "",
-        "func": "msg.headers.Authorization = `Bearer ${env.get('LINE_NOTIFY_TOKEN2')}`\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 220,
-        "wires": [
-            [
-                "f2bf4321ad8e0594"
-            ]
-        ]
     },
     {
         "id": "b662ca0d9a6fffc0",
