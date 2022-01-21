@@ -1,0 +1,258 @@
+[
+    {
+        "id": "9b8cd6c6ae9cb52d",
+        "type": "tab",
+        "label": "M1-2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ec787adfaf8fa800",
+        "type": "tab",
+        "label": "M1-3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4ebb091afc219aec",
+        "type": "inject",
+        "z": "9b8cd6c6ae9cb52d",
+        "name": "Inject Information",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "test",
+                "v": "false",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "This is a topic.",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "ddb50a383e16abad"
+            ]
+        ]
+    },
+    {
+        "id": "ddb50a383e16abad",
+        "type": "function",
+        "z": "9b8cd6c6ae9cb52d",
+        "name": "",
+        "func": "msg.payload = Math.random()\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "acb467723b33b431"
+            ]
+        ]
+    },
+    {
+        "id": "23d06c01dc018204",
+        "type": "debug",
+        "z": "9b8cd6c6ae9cb52d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "acb467723b33b431",
+        "type": "switch",
+        "z": "9b8cd6c6ae9cb52d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "0.5",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "0.5",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "51c21f153466710d"
+            ],
+            [
+                "3a70617de07bd7b7"
+            ]
+        ]
+    },
+    {
+        "id": "51c21f153466710d",
+        "type": "change",
+        "z": "9b8cd6c6ae9cb52d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "This ia a low value.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 80,
+        "wires": [
+            [
+                "23d06c01dc018204"
+            ]
+        ]
+    },
+    {
+        "id": "3a70617de07bd7b7",
+        "type": "change",
+        "z": "9b8cd6c6ae9cb52d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "This is a high value.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 180,
+        "wires": [
+            [
+                "23d06c01dc018204"
+            ]
+        ]
+    },
+    {
+        "id": "1284048a67017586",
+        "type": "inject",
+        "z": "ec787adfaf8fa800",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "7680f558c619fc5c"
+            ]
+        ]
+    },
+    {
+        "id": "7680f558c619fc5c",
+        "type": "http request",
+        "z": "ec787adfaf8fa800",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://google.com",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "18cf23fb0c2fc440",
+                "662817a2bb8db776"
+            ]
+        ]
+    },
+    {
+        "id": "18cf23fb0c2fc440",
+        "type": "debug",
+        "z": "ec787adfaf8fa800",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "662817a2bb8db776",
+        "type": "file",
+        "z": "ec787adfaf8fa800",
+        "name": "",
+        "filename": "index2.html",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 710,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    }
+]
