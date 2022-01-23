@@ -2,7 +2,7 @@
     {
         "id": "360e94ece4fe56a9",
         "type": "tab",
-        "label": "M1-6 Server POST",
+        "label": "M 2-1 Server POST",
         "disabled": false,
         "info": "",
         "env": []
@@ -26,12 +26,14 @@
             "140392d7dcb92019",
             "407f7ff0db36cb80",
             "f4f1a8977f0267cb",
-            "3cacd8cc84c25d0d"
+            "3cacd8cc84c25d0d",
+            "b60c655ae305692f",
+            "2ab4bca595ab1009"
         ],
-        "x": 14,
-        "y": 79,
-        "w": 752,
-        "h": 142
+        "x": 34,
+        "y": 39,
+        "w": 732,
+        "h": 302
     },
     {
         "id": "a7d9c5d3e9751545",
@@ -52,12 +54,14 @@
             "fc6dc92850034d6c",
             "82066d4d95eac850",
             "ae39f6c7a5a69714",
-            "1073004a64c0287f"
+            "1073004a64c0287f",
+            "c5a434c9a713e461",
+            "f9335d1744bf3b62"
         ],
         "x": 34,
-        "y": 279,
+        "y": 399,
         "w": 752,
-        "h": 162
+        "h": 282
     },
     {
         "id": "b0f5041a8300453b",
@@ -70,7 +74,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 110,
-        "y": 120,
+        "y": 140,
         "wires": [
             [
                 "407f7ff0db36cb80"
@@ -85,8 +89,8 @@
         "name": "Reply",
         "statusCode": "",
         "headers": {},
-        "x": 630,
-        "y": 120,
+        "x": 650,
+        "y": 140,
         "wires": []
     },
     {
@@ -104,7 +108,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 650,
-        "y": 180,
+        "y": 300,
         "wires": []
     },
     {
@@ -119,8 +123,8 @@
         "syntax": "mustache",
         "template": "I got your message: {{payload}} !",
         "output": "str",
-        "x": 360,
-        "y": 120,
+        "x": 380,
+        "y": 140,
         "wires": [
             [
                 "2df487027fd68320"
@@ -143,7 +147,7 @@
         "authType": "",
         "senderr": false,
         "x": 370,
-        "y": 180,
+        "y": 300,
         "wires": [
             [
                 "140392d7dcb92019"
@@ -177,8 +181,8 @@
         "topic": "",
         "payload": "I love you.",
         "payloadType": "str",
-        "x": 120,
-        "y": 180,
+        "x": 140,
+        "y": 300,
         "wires": [
             [
                 "f4f1a8977f0267cb"
@@ -195,8 +199,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 150,
-        "y": 320,
+        "x": 110,
+        "y": 500,
         "wires": [
             [
                 "fc6dc92850034d6c"
@@ -212,7 +216,7 @@
         "statusCode": "",
         "headers": {},
         "x": 670,
-        "y": 320,
+        "y": 500,
         "wires": []
     },
     {
@@ -228,7 +232,7 @@
         "finalize": "",
         "libs": [],
         "x": 390,
-        "y": 320,
+        "y": 500,
         "wires": [
             [
                 "2075593d277b8894"
@@ -250,7 +254,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 400,
+        "y": 640,
         "wires": []
     },
     {
@@ -269,7 +273,7 @@
         "authType": "",
         "senderr": false,
         "x": 390,
-        "y": 400,
+        "y": 640,
         "wires": [
             [
                 "82066d4d95eac850"
@@ -304,11 +308,55 @@
         "payload": "I love you.",
         "payloadType": "str",
         "x": 140,
-        "y": 400,
+        "y": 640,
         "wires": [
             [
                 "ae39f6c7a5a69714"
             ]
         ]
+    },
+    {
+        "id": "b60c655ae305692f",
+        "type": "comment",
+        "z": "360e94ece4fe56a9",
+        "g": "9e71dda4f602f907",
+        "name": "HTTP server /post1",
+        "info": "",
+        "x": 150,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "2ab4bca595ab1009",
+        "type": "comment",
+        "z": "360e94ece4fe56a9",
+        "g": "9e71dda4f602f907",
+        "name": "Post request",
+        "info": "",
+        "x": 130,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c5a434c9a713e461",
+        "type": "comment",
+        "z": "360e94ece4fe56a9",
+        "g": "a7d9c5d3e9751545",
+        "name": "HTTP server /post2",
+        "info": "",
+        "x": 150,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f9335d1744bf3b62",
+        "type": "comment",
+        "z": "360e94ece4fe56a9",
+        "g": "a7d9c5d3e9751545",
+        "name": "Post Request",
+        "info": "",
+        "x": 130,
+        "y": 580,
+        "wires": []
     }
 ]

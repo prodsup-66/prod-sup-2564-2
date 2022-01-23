@@ -120,3 +120,5 @@ dist
 
 # Nirand
 environment
+
+ngrok.exe

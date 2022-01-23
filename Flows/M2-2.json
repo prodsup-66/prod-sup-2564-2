@@ -1,0 +1,117 @@
+[
+    {
+        "id": "3049115b8d3d971d",
+        "type": "tab",
+        "label": "M2-2 Line notify",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "646c1b5e7b2902c8",
+        "type": "group",
+        "z": "3049115b8d3d971d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "1f1a35edd835b120",
+            "f2bf4321ad8e0594",
+            "52c6735083a314d7",
+            "b17dc552f66360b0"
+        ],
+        "x": 74,
+        "y": 59,
+        "w": 752,
+        "h": 142
+    },
+    {
+        "id": "1f1a35edd835b120",
+        "type": "inject",
+        "z": "3049115b8d3d971d",
+        "g": "646c1b5e7b2902c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "headers",
+                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer E0ypwB3Xn6IG91HKx7sTRCxrIkVOnq3HgMc6EkOES1K\"}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"message\":\"Hello\"}",
+        "payloadType": "json",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "f2bf4321ad8e0594"
+            ]
+        ]
+    },
+    {
+        "id": "f2bf4321ad8e0594",
+        "type": "http request",
+        "z": "3049115b8d3d971d",
+        "g": "646c1b5e7b2902c8",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://notify-api.line.me/api/notify",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "52c6735083a314d7"
+            ]
+        ]
+    },
+    {
+        "id": "52c6735083a314d7",
+        "type": "debug",
+        "z": "3049115b8d3d971d",
+        "g": "646c1b5e7b2902c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b17dc552f66360b0",
+        "type": "comment",
+        "z": "3049115b8d3d971d",
+        "g": "646c1b5e7b2902c8",
+        "name": "Line Notify",
+        "info": "",
+        "x": 160,
+        "y": 100,
+        "wires": []
+    }
+]
