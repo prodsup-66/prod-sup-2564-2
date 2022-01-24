@@ -2,7 +2,7 @@
     {
         "id": "cbf623ca5e71fcb8",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "S1 - M1-2",
         "disabled": false,
         "info": "",
         "env": []
@@ -10,7 +10,7 @@
     {
         "id": "abfccc04e77e3621",
         "type": "tab",
-        "label": "M1-3",
+        "label": "S1 - M1-3",
         "disabled": false,
         "info": "",
         "env": []
@@ -18,10 +18,38 @@
     {
         "id": "bd34b26883c1ca7a",
         "type": "tab",
-        "label": "M1-4",
+        "label": "S1 - M1-4",
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "e227ab2732246830",
+        "type": "group",
+        "z": "bd34b26883c1ca7a",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "beb326d2083c4302",
+            "5321418c77c59bc5",
+            "dc153d1b712d0c5b",
+            "322a4c46377d869f",
+            "39eddb454c92a05b",
+            "c77337b110a2750c",
+            "09a8fa7e6ddde915",
+            "6666c598b4ba8ffb"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 772,
+        "h": 302
     },
     {
         "id": "5992994c8bc322c6",
@@ -322,42 +350,25 @@
         "id": "beb326d2083c4302",
         "type": "http in",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "Hello",
         "url": "hello",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 70,
-        "y": 120,
+        "x": 90,
+        "y": 140,
         "wires": [
             [
-                "f7a5075529e68db7",
                 "09a8fa7e6ddde915"
             ]
         ]
     },
     {
-        "id": "f7a5075529e68db7",
-        "type": "debug",
-        "z": "bd34b26883c1ca7a",
-        "d": true,
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 650,
-        "y": 60,
-        "wires": []
-    },
-    {
         "id": "5321418c77c59bc5",
         "type": "inject",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "",
         "props": [
             {
@@ -375,7 +386,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
+        "x": 120,
         "y": 280,
         "wires": [
             [
@@ -387,6 +398,7 @@
         "id": "dc153d1b712d0c5b",
         "type": "http request",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "",
         "method": "GET",
         "ret": "txt",
@@ -397,7 +409,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 410,
+        "x": 350,
         "y": 280,
         "wires": [
             [
@@ -409,6 +421,7 @@
         "id": "322a4c46377d869f",
         "type": "template",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
@@ -428,6 +441,7 @@
         "id": "39eddb454c92a05b",
         "type": "http response",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "",
         "statusCode": "",
         "headers": {},
@@ -439,6 +453,7 @@
         "id": "c77337b110a2750c",
         "type": "debug",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -447,7 +462,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
+        "x": 570,
         "y": 280,
         "wires": []
     },
@@ -455,6 +470,7 @@
         "id": "09a8fa7e6ddde915",
         "type": "function",
         "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
         "name": "",
         "func": "let date = new Date()\n\nmsg.time = date.toLocaleTimeString()\nreturn msg;",
         "outputs": 1,
@@ -469,5 +485,16 @@
                 "322a4c46377d869f"
             ]
         ]
+    },
+    {
+        "id": "6666c598b4ba8ffb",
+        "type": "comment",
+        "z": "bd34b26883c1ca7a",
+        "g": "e227ab2732246830",
+        "name": "HTTP serve responding to /hello",
+        "info": "",
+        "x": 170,
+        "y": 60,
+        "wires": []
     }
 ]
