@@ -46,8 +46,8 @@
             "09a8fa7e6ddde915",
             "6666c598b4ba8ffb"
         ],
-        "x": 14,
-        "y": 19,
+        "x": 34,
+        "y": 39,
         "w": 772,
         "h": 302
     },
@@ -356,8 +356,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 140,
+        "x": 110,
+        "y": 160,
         "wires": [
             [
                 "09a8fa7e6ddde915"
@@ -386,8 +386,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 280,
+        "x": 140,
+        "y": 300,
         "wires": [
             [
                 "dc153d1b712d0c5b"
@@ -409,8 +409,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 350,
-        "y": 280,
+        "x": 370,
+        "y": 300,
         "wires": [
             [
                 "c77337b110a2750c"
@@ -429,8 +429,8 @@
         "syntax": "mustache",
         "template": "Hi there! Right now, it is {{time}}.",
         "output": "str",
-        "x": 500,
-        "y": 140,
+        "x": 520,
+        "y": 160,
         "wires": [
             [
                 "39eddb454c92a05b"
@@ -445,8 +445,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 710,
-        "y": 140,
+        "x": 730,
+        "y": 160,
         "wires": []
     },
     {
@@ -462,8 +462,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 280,
+        "x": 590,
+        "y": 300,
         "wires": []
     },
     {
@@ -478,8 +478,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 140,
+        "x": 300,
+        "y": 160,
         "wires": [
             [
                 "322a4c46377d869f"
@@ -493,8 +493,8 @@
         "g": "e227ab2732246830",
         "name": "HTTP serve responding to /hello",
         "info": "",
-        "x": 170,
-        "y": 60,
+        "x": 190,
+        "y": 80,
         "wires": []
     }
 ]

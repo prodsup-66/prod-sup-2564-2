@@ -496,5 +496,62 @@
         "x": 190,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "92266c1c8b6162bc",
+        "type": "comment",
+        "z": "bd34b26883c1ca7a",
+        "name": "HTTP server responding to /home",
+        "info": "",
+        "x": 180,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "c76d0e46c88d8fe0",
+        "type": "http in",
+        "z": "bd34b26883c1ca7a",
+        "name": "Home",
+        "url": "home",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 540,
+        "wires": [
+            [
+                "2fdaf0aa5092e2d8"
+            ]
+        ]
+    },
+    {
+        "id": "2fdaf0aa5092e2d8",
+        "type": "file in",
+        "z": "bd34b26883c1ca7a",
+        "name": "",
+        "filename": "html/index.html",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 290,
+        "y": 540,
+        "wires": [
+            [
+                "0040c7b4c1a3918c"
+            ]
+        ]
+    },
+    {
+        "id": "0040c7b4c1a3918c",
+        "type": "http response",
+        "z": "bd34b26883c1ca7a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 500,
+        "y": 540,
+        "wires": []
     }
 ]
