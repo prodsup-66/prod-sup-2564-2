@@ -64,6 +64,14 @@
         "env": []
     },
     {
+        "id": "dbbde358191b7d76",
+        "type": "tab",
+        "label": "Attendance",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "cd3a1dfe73fbb0b7",
         "type": "group",
         "z": "1252c8c9df17633c",
@@ -154,9 +162,7 @@
             "d834ad21bd37ea96"
         ],
         "x": 34,
-        "y": 19,
-        "w": 772,
-        "h": 302
+        "y": 19
     },
     {
         "id": "fc089742b7a03c9a",
@@ -177,9 +183,7 @@
             "2662dd203444845c"
         ],
         "x": 34,
-        "y": 379,
-        "w": 632,
-        "h": 342
+        "y": 379
     },
     {
         "id": "9e71dda4f602f907",
@@ -205,9 +209,7 @@
             "2ab4bca595ab1009"
         ],
         "x": 34,
-        "y": 39,
-        "w": 732,
-        "h": 302
+        "y": 39
     },
     {
         "id": "a7d9c5d3e9751545",
@@ -233,9 +235,7 @@
             "f9335d1744bf3b62"
         ],
         "x": 34,
-        "y": 399,
-        "w": 752,
-        "h": 282
+        "y": 399
     },
     {
         "id": "646c1b5e7b2902c8",
@@ -257,9 +257,7 @@
             "b17dc552f66360b0"
         ],
         "x": 74,
-        "y": 59,
-        "w": 752,
-        "h": 142
+        "y": 59
     },
     {
         "id": "0e464c3096fa78b4",
@@ -2172,5 +2170,73 @@
                 "cd5770bc81803a34"
             ]
         ]
+    },
+    {
+        "id": "8fe770a2e6183dd2",
+        "type": "http request",
+        "z": "dbbde358191b7d76",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://materials-line.herokuapp.com/prodsup",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "aa1e8c4f377dfaae"
+            ]
+        ]
+    },
+    {
+        "id": "644ec28244394e54",
+        "type": "inject",
+        "z": "dbbde358191b7d76",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"cmu_id\":\"123456788\",\"code\":\"4c28\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "8fe770a2e6183dd2"
+            ]
+        ]
+    },
+    {
+        "id": "aa1e8c4f377dfaae",
+        "type": "debug",
+        "z": "dbbde358191b7d76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 160,
+        "wires": []
     }
 ]
