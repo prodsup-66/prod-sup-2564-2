@@ -2212,9 +2212,9 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"cmu_id\":\"123456788\",\"code\":\"4c28\"}",
+        "payload": "{\"cmu_id\":\"111222333\",\"code\":\"xxxx\"}",
         "payloadType": "json",
-        "x": 120,
+        "x": 130,
         "y": 160,
         "wires": [
             [
@@ -2235,8 +2235,18 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
+        "x": 530,
         "y": 160,
+        "wires": []
+    },
+    {
+        "id": "795a12c0b58bb731",
+        "type": "comment",
+        "z": "dbbde358191b7d76",
+        "name": "Attendance",
+        "info": "",
+        "x": 130,
+        "y": 100,
         "wires": []
     }
 ]
