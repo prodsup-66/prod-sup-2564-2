@@ -16,6 +16,39 @@
         "env": []
     },
     {
+        "id": "c3da786e1ee16ef3",
+        "type": "tab",
+        "label": "M1-4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fb86460367c7bbad",
+        "type": "group",
+        "z": "c3da786e1ee16ef3",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "521279ae28f2789a",
+            "396e5beed2443084",
+            "1d155914e24e1bf2",
+            "cbd2afac3df63b65",
+            "41f1fe4e8e4366b6"
+        ],
+        "x": 24,
+        "y": 39,
+        "w": 672,
+        "h": 182
+    },
+    {
         "id": "4ebb091afc219aec",
         "type": "inject",
         "z": "9b8cd6c6ae9cb52d",
@@ -254,5 +287,143 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "521279ae28f2789a",
+        "type": "comment",
+        "z": "c3da786e1ee16ef3",
+        "g": "fb86460367c7bbad",
+        "name": "HTTP Server responding to /hello",
+        "info": "",
+        "x": 190,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "396e5beed2443084",
+        "type": "http in",
+        "z": "c3da786e1ee16ef3",
+        "g": "fb86460367c7bbad",
+        "name": "Hello",
+        "url": "hello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 180,
+        "wires": [
+            [
+                "41f1fe4e8e4366b6"
+            ]
+        ]
+    },
+    {
+        "id": "1d155914e24e1bf2",
+        "type": "template",
+        "z": "c3da786e1ee16ef3",
+        "g": "fb86460367c7bbad",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hi there. Right now it is {{time}}.",
+        "output": "str",
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "cbd2afac3df63b65"
+            ]
+        ]
+    },
+    {
+        "id": "cbd2afac3df63b65",
+        "type": "http response",
+        "z": "c3da786e1ee16ef3",
+        "g": "fb86460367c7bbad",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 620,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "41f1fe4e8e4366b6",
+        "type": "function",
+        "z": "c3da786e1ee16ef3",
+        "g": "fb86460367c7bbad",
+        "name": "",
+        "func": "const date = new Date();\nmsg.time = date.toLocaleTimeString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "1d155914e24e1bf2"
+            ]
+        ]
+    },
+    {
+        "id": "7d34810ed07af3da",
+        "type": "comment",
+        "z": "c3da786e1ee16ef3",
+        "name": "HTTP Server responding to /home",
+        "info": "",
+        "x": 160,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "638c522a4ba789f5",
+        "type": "http in",
+        "z": "c3da786e1ee16ef3",
+        "name": "Home",
+        "url": "home",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 420,
+        "wires": [
+            [
+                "324a56bbdf0691ee"
+            ]
+        ]
+    },
+    {
+        "id": "324a56bbdf0691ee",
+        "type": "file in",
+        "z": "c3da786e1ee16ef3",
+        "name": "",
+        "filename": "html/index.html",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 330,
+        "y": 420,
+        "wires": [
+            [
+                "e88a853a79231e53"
+            ]
+        ]
+    },
+    {
+        "id": "e88a853a79231e53",
+        "type": "http response",
+        "z": "c3da786e1ee16ef3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 580,
+        "y": 420,
+        "wires": []
     }
 ]
