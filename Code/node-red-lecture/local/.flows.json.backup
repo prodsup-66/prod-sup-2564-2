@@ -162,7 +162,9 @@
             "d834ad21bd37ea96"
         ],
         "x": 34,
-        "y": 19
+        "y": 19,
+        "w": 772,
+        "h": 302
     },
     {
         "id": "fc089742b7a03c9a",
@@ -183,7 +185,9 @@
             "2662dd203444845c"
         ],
         "x": 34,
-        "y": 379
+        "y": 379,
+        "w": 632,
+        "h": 342
     },
     {
         "id": "9e71dda4f602f907",
@@ -206,10 +210,13 @@
             "f4f1a8977f0267cb",
             "3cacd8cc84c25d0d",
             "b60c655ae305692f",
-            "2ab4bca595ab1009"
+            "2ab4bca595ab1009",
+            "910cbfb5f22d743a"
         ],
         "x": 34,
-        "y": 39
+        "y": 39,
+        "w": 732,
+        "h": 302
     },
     {
         "id": "a7d9c5d3e9751545",
@@ -235,7 +242,9 @@
             "f9335d1744bf3b62"
         ],
         "x": 34,
-        "y": 399
+        "y": 399,
+        "w": 752,
+        "h": 282
     },
     {
         "id": "646c1b5e7b2902c8",
@@ -1097,7 +1106,8 @@
         "y": 140,
         "wires": [
             [
-                "407f7ff0db36cb80"
+                "407f7ff0db36cb80",
+                "910cbfb5f22d743a"
             ]
         ]
     },
@@ -1191,6 +1201,11 @@
             {
                 "p": "url",
                 "v": "http://localhost:1880/post1",
+                "vt": "str"
+            },
+            {
+                "p": "text",
+                "v": "asdfasdfasd",
                 "vt": "str"
             }
         ],
@@ -1377,6 +1392,24 @@
         "info": "",
         "x": 130,
         "y": 580,
+        "wires": []
+    },
+    {
+        "id": "910cbfb5f22d743a",
+        "type": "debug",
+        "z": "360e94ece4fe56a9",
+        "g": "9e71dda4f602f907",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 220,
         "wires": []
     },
     {
@@ -2212,7 +2245,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"cmu_id\":\"630610321\",\"code\":\"4c2\"}",
+        "payload": "{\"cmu_id\":\"111222333\",\"code\":\"xxxx\"}",
         "payloadType": "json",
         "x": 130,
         "y": 160,
