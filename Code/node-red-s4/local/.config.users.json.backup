@@ -14,7 +14,7 @@
                 "welcome": "2.1.6"
             }
         },
-        "menu-menu-item-sidebar": true,
-        "menu-menu-item-palette": false
+        "menu-menu-item-sidebar": false,
+        "menu-menu-item-palette": true
     }
 }

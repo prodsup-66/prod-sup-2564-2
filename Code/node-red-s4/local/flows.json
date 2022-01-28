@@ -24,6 +24,30 @@
         "env": []
     },
     {
+        "id": "bb433892319f1ad4",
+        "type": "tab",
+        "label": "M2-1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6ca271d5e1c89de0",
+        "type": "tab",
+        "label": "Attendance",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bd81eb1e651c8a36",
+        "type": "tab",
+        "label": "M2-2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "fb86460367c7bbad",
         "type": "group",
         "z": "c3da786e1ee16ef3",
@@ -47,6 +71,34 @@
         "y": 39,
         "w": 672,
         "h": 182
+    },
+    {
+        "id": "05bb53d42b667096",
+        "type": "group",
+        "z": "bb433892319f1ad4",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "1ba39654f67a1047",
+            "eb99bf335c1c5596",
+            "4bd29ecb923bdfe6",
+            "b541a98d58822ccd",
+            "fbf641fb71c384a9",
+            "5357c806b6a40a1d",
+            "f41814d0aa5a0166",
+            "f3174e0d6f6a97a9"
+        ],
+        "x": 24,
+        "y": 19,
+        "w": 682,
+        "h": 342
     },
     {
         "id": "4ebb091afc219aec",
@@ -424,6 +476,461 @@
         "headers": {},
         "x": 580,
         "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1ba39654f67a1047",
+        "type": "comment",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "HTTP server listening to /post1",
+        "info": "",
+        "x": 200,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "eb99bf335c1c5596",
+        "type": "http in",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "Post1",
+        "url": "post1",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "4bd29ecb923bdfe6"
+            ]
+        ]
+    },
+    {
+        "id": "4bd29ecb923bdfe6",
+        "type": "template",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I got your message: {{payload}} !",
+        "output": "str",
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "b541a98d58822ccd"
+            ]
+        ]
+    },
+    {
+        "id": "b541a98d58822ccd",
+        "type": "http response",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 560,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "fbf641fb71c384a9",
+        "type": "comment",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "Post request",
+        "info": "",
+        "x": 130,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5357c806b6a40a1d",
+        "type": "inject",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "url",
+                "v": "http://localhost:1881/post1",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "I love you very much.",
+        "payloadType": "str",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "f41814d0aa5a0166"
+            ]
+        ]
+    },
+    {
+        "id": "f41814d0aa5a0166",
+        "type": "http request",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "f3174e0d6f6a97a9"
+            ]
+        ]
+    },
+    {
+        "id": "f3174e0d6f6a97a9",
+        "type": "debug",
+        "z": "bb433892319f1ad4",
+        "g": "05bb53d42b667096",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c3b0a055e6a1046a",
+        "type": "comment",
+        "z": "bb433892319f1ad4",
+        "name": "HTTP server listening to /post2",
+        "info": "",
+        "x": 170,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9f6d4244bdebe03c",
+        "type": "http in",
+        "z": "bb433892319f1ad4",
+        "name": "Post2",
+        "url": "post2",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 540,
+        "wires": [
+            [
+                "2b69469164530f48"
+            ]
+        ]
+    },
+    {
+        "id": "2b69469164530f48",
+        "type": "function",
+        "z": "bb433892319f1ad4",
+        "name": "",
+        "func": "const message = msg.payload;\nconst date = new Date();\nconst time = date.toLocaleTimeString();\n\nmsg.payload = `I got your message \"${message}\" at ${time} !`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "7a6b2e964846de04"
+            ]
+        ]
+    },
+    {
+        "id": "7a6b2e964846de04",
+        "type": "http response",
+        "z": "bb433892319f1ad4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 580,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "1024ae00eac1b054",
+        "type": "comment",
+        "z": "bb433892319f1ad4",
+        "name": "Post request",
+        "info": "",
+        "x": 110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "b7a0c2194f5ae2a8",
+        "type": "inject",
+        "z": "bb433892319f1ad4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "url",
+                "v": "http://localhost:1881/post2",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "I love you.",
+        "payloadType": "str",
+        "x": 110,
+        "y": 700,
+        "wires": [
+            [
+                "da54eaeabb18965e"
+            ]
+        ]
+    },
+    {
+        "id": "da54eaeabb18965e",
+        "type": "http request",
+        "z": "bb433892319f1ad4",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 340,
+        "y": 700,
+        "wires": [
+            [
+                "e153001a1f33b2a7"
+            ]
+        ]
+    },
+    {
+        "id": "e153001a1f33b2a7",
+        "type": "debug",
+        "z": "bb433892319f1ad4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c2e6ae48a67edf56",
+        "type": "comment",
+        "z": "6ca271d5e1c89de0",
+        "name": "เช็คชื่อ",
+        "info": "",
+        "x": 120,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "8750985113460b45",
+        "type": "inject",
+        "z": "6ca271d5e1c89de0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "url",
+                "v": "https://materials-line.herokuapp.com/prodsup",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"cmu_id\":\"123456788\",\"code\":\"9d65\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "269bcf742c0f17e5"
+            ]
+        ]
+    },
+    {
+        "id": "269bcf742c0f17e5",
+        "type": "http request",
+        "z": "6ca271d5e1c89de0",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "e01d80dfa20f9da7"
+            ]
+        ]
+    },
+    {
+        "id": "e01d80dfa20f9da7",
+        "type": "debug",
+        "z": "6ca271d5e1c89de0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "10c8e9083f43c9b8",
+        "type": "comment",
+        "z": "bd81eb1e651c8a36",
+        "name": "Line Notify",
+        "info": "",
+        "x": 130,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "50303ac7204c8495",
+        "type": "inject",
+        "z": "bd81eb1e651c8a36",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "headers",
+                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer qFM8dAHlPJdDDaXqUEfb0MjBjYjeELTLCrWbitlpKad\"}",
+                "vt": "json"
+            },
+            {
+                "p": "url",
+                "v": "https://notify-api.line.me/api/notify",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"message\":\"Hello from node-red.\"}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "a4402d31ffc13692"
+            ]
+        ]
+    },
+    {
+        "id": "a4402d31ffc13692",
+        "type": "http request",
+        "z": "bd81eb1e651c8a36",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "24e6bfb1f526bf68"
+            ]
+        ]
+    },
+    {
+        "id": "24e6bfb1f526bf68",
+        "type": "debug",
+        "z": "bd81eb1e651c8a36",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 180,
         "wires": []
     }
 ]
