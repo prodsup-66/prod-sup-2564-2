@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "97570cd0c7150bd5",
+        "type": "tab",
+        "label": "M3-1 MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "dedfba256312356e",
         "type": "tab",
         "label": "Project",
@@ -162,9 +170,7 @@
             "d834ad21bd37ea96"
         ],
         "x": 34,
-        "y": 19,
-        "w": 772,
-        "h": 302
+        "y": 19
     },
     {
         "id": "fc089742b7a03c9a",
@@ -185,9 +191,7 @@
             "2662dd203444845c"
         ],
         "x": 34,
-        "y": 379,
-        "w": 632,
-        "h": 342
+        "y": 379
     },
     {
         "id": "9e71dda4f602f907",
@@ -210,13 +214,10 @@
             "f4f1a8977f0267cb",
             "3cacd8cc84c25d0d",
             "b60c655ae305692f",
-            "2ab4bca595ab1009",
-            "910cbfb5f22d743a"
+            "2ab4bca595ab1009"
         ],
         "x": 34,
-        "y": 39,
-        "w": 732,
-        "h": 302
+        "y": 39
     },
     {
         "id": "a7d9c5d3e9751545",
@@ -242,9 +243,7 @@
             "f9335d1744bf3b62"
         ],
         "x": 34,
-        "y": 399,
-        "w": 752,
-        "h": 282
+        "y": 399
     },
     {
         "id": "646c1b5e7b2902c8",
@@ -1106,8 +1105,7 @@
         "y": 140,
         "wires": [
             [
-                "407f7ff0db36cb80",
-                "910cbfb5f22d743a"
+                "407f7ff0db36cb80"
             ]
         ]
     },
@@ -1201,11 +1199,6 @@
             {
                 "p": "url",
                 "v": "http://localhost:1880/post1",
-                "vt": "str"
-            },
-            {
-                "p": "text",
-                "v": "asdfasdfasd",
                 "vt": "str"
             }
         ],
@@ -1395,24 +1388,6 @@
         "wires": []
     },
     {
-        "id": "910cbfb5f22d743a",
-        "type": "debug",
-        "z": "360e94ece4fe56a9",
-        "g": "9e71dda4f602f907",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 280,
-        "y": 220,
-        "wires": []
-    },
-    {
         "id": "1f1a35edd835b120",
         "type": "inject",
         "z": "3049115b8d3d971d",
@@ -1493,6 +1468,43 @@
         "info": "",
         "x": 160,
         "y": 100,
+        "wires": []
+    },
+    {
+        "id": "53c2a9d79b906bb9",
+        "type": "mqtt in",
+        "z": "97570cd0c7150bd5",
+        "name": "",
+        "topic": "test/main",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "5d3245bfbfc17903",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "9a2c86219ee7b306"
+            ]
+        ]
+    },
+    {
+        "id": "9a2c86219ee7b306",
+        "type": "debug",
+        "z": "97570cd0c7150bd5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 180,
         "wires": []
     },
     {
