@@ -268,6 +268,52 @@
         "y": 59
     },
     {
+        "id": "3aeb67bbf7ebc16c",
+        "type": "group",
+        "z": "97570cd0c7150bd5",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "53c2a9d79b906bb9",
+            "9a2c86219ee7b306",
+            "2b6cd4112e3a1d9f"
+        ],
+        "x": 54,
+        "y": 39,
+        "w": 472,
+        "h": 142
+    },
+    {
+        "id": "861a09986a42fb22",
+        "type": "group",
+        "z": "97570cd0c7150bd5",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "c498a57574727ef4",
+            "e047e230ce428050",
+            "b7d1ea5e6a411309"
+        ],
+        "x": 54,
+        "y": 259,
+        "w": 452,
+        "h": 142
+    },
+    {
         "id": "0e464c3096fa78b4",
         "type": "ui_tab",
         "name": "Dashboard",
@@ -434,6 +480,32 @@
         "width": "6",
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "d60b0376d6144a48",
+        "type": "mqtt-broker",
+        "name": "ProdSup2",
+        "broker": "35.240.248.118",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "89b13d61e17a6320",
@@ -1474,17 +1546,18 @@
         "id": "53c2a9d79b906bb9",
         "type": "mqtt in",
         "z": "97570cd0c7150bd5",
+        "g": "3aeb67bbf7ebc16c",
         "name": "",
         "topic": "test/main",
         "qos": "1",
         "datatype": "auto",
-        "broker": "5d3245bfbfc17903",
+        "broker": "d60b0376d6144a48",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 290,
-        "y": 180,
+        "x": 140,
+        "y": 140,
         "wires": [
             [
                 "9a2c86219ee7b306"
@@ -1495,6 +1568,7 @@
         "id": "9a2c86219ee7b306",
         "type": "debug",
         "z": "97570cd0c7150bd5",
+        "g": "3aeb67bbf7ebc16c",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1503,8 +1577,78 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
-        "y": 180,
+        "x": 410,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c498a57574727ef4",
+        "type": "mqtt out",
+        "z": "97570cd0c7150bd5",
+        "g": "861a09986a42fb22",
+        "name": "",
+        "topic": "test/main",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5d3245bfbfc17903",
+        "x": 420,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e047e230ce428050",
+        "type": "inject",
+        "z": "97570cd0c7150bd5",
+        "g": "861a09986a42fb22",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "c498a57574727ef4"
+            ]
+        ]
+    },
+    {
+        "id": "2b6cd4112e3a1d9f",
+        "type": "comment",
+        "z": "97570cd0c7150bd5",
+        "g": "3aeb67bbf7ebc16c",
+        "name": "Subscribe to a topic",
+        "info": "",
+        "x": 170,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b7d1ea5e6a411309",
+        "type": "comment",
+        "z": "97570cd0c7150bd5",
+        "g": "861a09986a42fb22",
+        "name": "Publish to a topic",
+        "info": "",
+        "x": 160,
+        "y": 300,
         "wires": []
     },
     {
