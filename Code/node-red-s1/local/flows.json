@@ -48,6 +48,14 @@
         "env": []
     },
     {
+        "id": "2941a077e8599b68",
+        "type": "tab",
+        "label": "M3-1 MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e227ab2732246830",
         "type": "group",
         "z": "bd34b26883c1ca7a",
@@ -71,7 +79,9 @@
             "6666c598b4ba8ffb"
         ],
         "x": 34,
-        "y": 39
+        "y": 39,
+        "w": 772,
+        "h": 302
     },
     {
         "id": "ac06e9e2e4aea5b0",
@@ -96,7 +106,35 @@
             "bfe1207c7c3511c4"
         ],
         "x": 24,
-        "y": 99
+        "y": 99,
+        "w": 712,
+        "h": 262
+    },
+    {
+        "id": "78a8aaf412212b5d",
+        "type": "mqtt-broker",
+        "name": "PropSup",
+        "broker": "35.240.248.118",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "5992994c8bc322c6",
@@ -920,7 +958,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"cmu_id\":\"123456788\",\"code\":\"5982\"}",
+        "payload": "{\"cmu_id\":\"123456788\",\"code\":\"4939\"}",
         "payloadType": "json",
         "x": 120,
         "y": 160,
@@ -1032,5 +1070,109 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "76f7c886a9820b47",
+        "type": "comment",
+        "z": "2941a077e8599b68",
+        "name": "Subscribe to a topic",
+        "info": "",
+        "x": 160,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "197823f880e7aeb2",
+        "type": "mqtt in",
+        "z": "2941a077e8599b68",
+        "name": "",
+        "topic": "test/main",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "78a8aaf412212b5d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "d4f99f78869ba9cf"
+            ]
+        ]
+    },
+    {
+        "id": "d4f99f78869ba9cf",
+        "type": "debug",
+        "z": "2941a077e8599b68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "178b70772af4a6d0",
+        "type": "comment",
+        "z": "2941a077e8599b68",
+        "name": "Publish to a topic",
+        "info": "",
+        "x": 140,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4407b4db1c70359d",
+        "type": "inject",
+        "z": "2941a077e8599b68",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hi from Node-Red....",
+        "payloadType": "str",
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "fa453bcf898ce8a9"
+            ]
+        ]
+    },
+    {
+        "id": "fa453bcf898ce8a9",
+        "type": "mqtt out",
+        "z": "2941a077e8599b68",
+        "name": "",
+        "topic": "test/main",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78a8aaf412212b5d",
+        "x": 430,
+        "y": 380,
+        "wires": []
     }
 ]

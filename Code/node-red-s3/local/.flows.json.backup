@@ -48,6 +48,14 @@
         "env": []
     },
     {
+        "id": "f09824d5f4157c3f",
+        "type": "tab",
+        "label": "M3-1 MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d82e92c1fa12e6f2",
         "type": "group",
         "z": "f3de32e3d86d9740",
@@ -73,9 +81,7 @@
             "b55df56065df44f5"
         ],
         "x": 34,
-        "y": 19,
-        "w": 852,
-        "h": 322
+        "y": 19
     },
     {
         "id": "4e062412a4f10145",
@@ -101,9 +107,33 @@
             "52463d33425f6d66"
         ],
         "x": 24,
-        "y": 39,
-        "w": 692,
-        "h": 362
+        "y": 39
+    },
+    {
+        "id": "8067b88f31d90dcf",
+        "type": "mqtt-broker",
+        "name": "ProdSup",
+        "broker": "35.240.248.118",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "b13a73fe770c2246",
@@ -1073,7 +1103,7 @@
         "wires": []
     },
     {
-        "id": "d19b545c35c33479",
+        "id": "f61b2ab4254a9f3f",
         "type": "inject",
         "z": "cff346690fa4aff6",
         "name": "",
@@ -1083,7 +1113,7 @@
             },
             {
                 "p": "headers",
-                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer 7iohcEOfYY1xuZGwL7ebtc52OxEvkVz9VVT2tErBnZ2\"}",
+                "v": "{\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\":\"Bearer A4t5r6sfWP8gHVrx65xQyWs1wCSPPleJPVRogKJ2mI3\"}",
                 "vt": "json"
             },
             {
@@ -1097,18 +1127,18 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"message\":\"Hello from node-red\"}",
+        "payload": "{\"message\":\"Hello from node-red.\"}",
         "payloadType": "json",
         "x": 140,
-        "y": 140,
+        "y": 100,
         "wires": [
             [
-                "c879e9ff7dc871b0"
+                "2e1169981dc7163b"
             ]
         ]
     },
     {
-        "id": "c879e9ff7dc871b0",
+        "id": "2e1169981dc7163b",
         "type": "http request",
         "z": "cff346690fa4aff6",
         "name": "",
@@ -1121,16 +1151,16 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 390,
-        "y": 140,
+        "x": 360,
+        "y": 100,
         "wires": [
             [
-                "ce25e08adaa395c8"
+                "5807cdf4f51e9fc1"
             ]
         ]
     },
     {
-        "id": "ce25e08adaa395c8",
+        "id": "5807cdf4f51e9fc1",
         "type": "debug",
         "z": "cff346690fa4aff6",
         "name": "",
@@ -1141,8 +1171,112 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 140,
+        "x": 620,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8abb2f3a54b2040c",
+        "type": "comment",
+        "z": "f09824d5f4157c3f",
+        "name": "Subscribe to a topic",
+        "info": "",
+        "x": 170,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "5ceeef13b7d04e88",
+        "type": "mqtt in",
+        "z": "f09824d5f4157c3f",
+        "name": "",
+        "topic": "test/main",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "8067b88f31d90dcf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "8c494f6b1b876d3e"
+            ]
+        ]
+    },
+    {
+        "id": "8c494f6b1b876d3e",
+        "type": "debug",
+        "z": "f09824d5f4157c3f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4b65bc11267643a8",
+        "type": "comment",
+        "z": "f09824d5f4157c3f",
+        "name": "Publish to a topic",
+        "info": "",
+        "x": 160,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "368b27faf57a8260",
+        "type": "inject",
+        "z": "f09824d5f4157c3f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Give me link plzzzzzzzzz",
+        "payloadType": "str",
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "5a5d9278f491a559"
+            ]
+        ]
+    },
+    {
+        "id": "5a5d9278f491a559",
+        "type": "mqtt out",
+        "z": "f09824d5f4157c3f",
+        "name": "",
+        "topic": "test/main",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8067b88f31d90dcf",
+        "x": 430,
+        "y": 380,
         "wires": []
     }
 ]
