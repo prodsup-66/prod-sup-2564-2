@@ -50,7 +50,31 @@
     {
         "id": "dd2fedbc45d34aa1",
         "type": "tab",
-        "label": "M4-1: Sensor",
+        "label": "M4-2: Sensor Subscriber",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ea83331cc935d51f",
+        "type": "tab",
+        "label": "M4-3: Fake Sensors",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "740aab15e2c10d31",
+        "type": "tab",
+        "label": "M5-1: Dashboard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "42323f5cd5a1a54b",
+        "type": "tab",
+        "label": "M5-2: Control",
         "disabled": false,
         "info": "",
         "env": []
@@ -324,9 +348,9 @@
     {
         "id": "0e464c3096fa78b4",
         "type": "ui_tab",
-        "name": "Dashboard",
+        "name": "Main",
         "icon": "dashboard",
-        "order": 1,
+        "order": 3,
         "disabled": false,
         "hidden": false
     },
@@ -474,7 +498,7 @@
         "type": "ui_tab",
         "name": "Control",
         "icon": "dashboard",
-        "order": 2,
+        "order": 4,
         "disabled": false,
         "hidden": false
     },
@@ -514,6 +538,56 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
+    },
+    {
+        "id": "0bcace1c37b96e4e",
+        "type": "ui_tab",
+        "name": "Home - Reading",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f83404baf46e6560",
+        "type": "ui_group",
+        "name": "Test Reading",
+        "tab": "0bcace1c37b96e4e",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "77f04b51e37f9722",
+        "type": "ui_tab",
+        "name": "Home - Control",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "028fd3e511a2e49b",
+        "type": "ui_group",
+        "name": "Test Control",
+        "tab": "77f04b51e37f9722",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dbba3fc7a3a306ad",
+        "type": "ui_spacer",
+        "z": "42323f5cd5a1a54b",
+        "name": "spacer",
+        "group": "028fd3e511a2e49b",
+        "order": 1,
+        "width": 1,
+        "height": 1
     },
     {
         "id": "89b13d61e17a6320",
@@ -1554,6 +1628,7 @@
         "id": "53c2a9d79b906bb9",
         "type": "mqtt in",
         "z": "97570cd0c7150bd5",
+        "d": true,
         "g": "3aeb67bbf7ebc16c",
         "name": "",
         "topic": "test/main",
@@ -1593,6 +1668,7 @@
         "id": "c498a57574727ef4",
         "type": "mqtt out",
         "z": "97570cd0c7150bd5",
+        "d": true,
         "g": "861a09986a42fb22",
         "name": "",
         "topic": "test/main",
@@ -1735,9 +1811,19 @@
         ]
     },
     {
-        "id": "3879bbb994d55306",
-        "type": "inject",
+        "id": "694c830cfb564be2",
+        "type": "comment",
         "z": "dd2fedbc45d34aa1",
+        "name": "Sensor Subscriber",
+        "info": "",
+        "x": 220,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e6f191eb8332a33b",
+        "type": "inject",
+        "z": "ea83331cc935d51f",
         "name": "",
         "props": [
             {
@@ -1754,18 +1840,18 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 280,
+        "x": 110,
+        "y": 120,
         "wires": [
             [
-                "e1455196cda36482"
+                "af0fd483d3f88a30"
             ]
         ]
     },
     {
-        "id": "e1455196cda36482",
+        "id": "af0fd483d3f88a30",
         "type": "function",
-        "z": "dd2fedbc45d34aa1",
+        "z": "ea83331cc935d51f",
         "name": "",
         "func": "msg.payload = Math.random()\nreturn msg;",
         "outputs": 1,
@@ -1773,18 +1859,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 280,
+        "x": 320,
+        "y": 120,
         "wires": [
             [
-                "55ea4375b4ab5f70"
+                "1ef8a30b47d046da"
             ]
         ]
     },
     {
-        "id": "55ea4375b4ab5f70",
+        "id": "1ef8a30b47d046da",
         "type": "mqtt out",
-        "z": "dd2fedbc45d34aa1",
+        "z": "ea83331cc935d51f",
         "d": true,
         "name": "",
         "topic": "test/fakesensor",
@@ -1796,14 +1882,14 @@
         "correl": "",
         "expiry": "",
         "broker": "5d3245bfbfc17903",
-        "x": 640,
-        "y": 280,
+        "x": 540,
+        "y": 120,
         "wires": []
     },
     {
-        "id": "49b550b75de11d14",
+        "id": "f91fa2d8c91e62bd",
         "type": "mqtt in",
-        "z": "dd2fedbc45d34aa1",
+        "z": "ea83331cc935d51f",
         "d": true,
         "name": "",
         "topic": "test/fakesensor",
@@ -1814,18 +1900,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 210,
-        "y": 380,
+        "x": 100,
+        "y": 260,
         "wires": [
             [
-                "e89e6ed608230c77"
+                "23fb0bba32f153c0"
             ]
         ]
     },
     {
-        "id": "049b3eb6986550ac",
+        "id": "3c3cd6c53a5f41a0",
         "type": "debug",
-        "z": "dd2fedbc45d34aa1",
+        "z": "ea83331cc935d51f",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1834,14 +1920,14 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 380,
+        "x": 520,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "e89e6ed608230c77",
+        "id": "23fb0bba32f153c0",
         "type": "function",
-        "z": "dd2fedbc45d34aa1",
+        "z": "ea83331cc935d51f",
         "name": "",
         "func": "const payload = msg.payload;\nmsg.payload = parseFloat(payload);\nreturn msg;",
         "outputs": 1,
@@ -1849,22 +1935,314 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 380,
+        "x": 320,
+        "y": 260,
         "wires": [
             [
-                "049b3eb6986550ac"
+                "3c3cd6c53a5f41a0"
             ]
         ]
     },
     {
-        "id": "694c830cfb564be2",
+        "id": "d15b42a64fc36e71",
         "type": "comment",
-        "z": "dd2fedbc45d34aa1",
-        "name": "Sensor Subscriber",
+        "z": "ea83331cc935d51f",
+        "name": "Fake sensor",
         "info": "",
-        "x": 220,
+        "x": 90,
         "y": 60,
+        "wires": []
+    },
+    {
+        "id": "f121f7a5d2c319ad",
+        "type": "comment",
+        "z": "ea83331cc935d51f",
+        "name": "Fake-sensor subscriber",
+        "info": "",
+        "x": 120,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "413552add17de23b",
+        "type": "inject",
+        "z": "740aab15e2c10d31",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "26c968d87cface70"
+            ]
+        ]
+    },
+    {
+        "id": "bab631aacafb4eef",
+        "type": "ui_chart",
+        "z": "740aab15e2c10d31",
+        "name": "",
+        "group": "f83404baf46e6560",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 580,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26c968d87cface70",
+        "type": "function",
+        "z": "740aab15e2c10d31",
+        "name": "",
+        "func": "const timestamp = msg.payload\nconst period = 10\nmsg.payload = Math.sin(timestamp/1000*2*Math.PI/period)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "bab631aacafb4eef",
+                "706f72f5ba713358"
+            ]
+        ]
+    },
+    {
+        "id": "706f72f5ba713358",
+        "type": "ui_gauge",
+        "z": "740aab15e2c10d31",
+        "name": "",
+        "group": "f83404baf46e6560",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "-1",
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 580,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b3ad01f18dd29bda",
+        "type": "comment",
+        "z": "740aab15e2c10d31",
+        "name": "Graph and gauge",
+        "info": "",
+        "x": 140,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "f32c4770eaef2cb7",
+        "type": "ui_button",
+        "z": "42323f5cd5a1a54b",
+        "name": "",
+        "group": "028fd3e511a2e49b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "green",
+        "className": "",
+        "icon": "",
+        "payload": "start",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "9208b0fdcc8341f6"
+            ]
+        ]
+    },
+    {
+        "id": "9208b0fdcc8341f6",
+        "type": "mqtt out",
+        "z": "42323f5cd5a1a54b",
+        "d": true,
+        "name": "",
+        "topic": "test/flashlight",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5d3245bfbfc17903",
+        "x": 450,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3d19f312112d01c4",
+        "type": "mqtt in",
+        "z": "42323f5cd5a1a54b",
+        "d": true,
+        "name": "",
+        "topic": "test/flashlight",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "5d3245bfbfc17903",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "8c08f9be6f9da7b2"
+            ]
+        ]
+    },
+    {
+        "id": "d90dedefa169d85c",
+        "type": "debug",
+        "z": "42323f5cd5a1a54b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8c08f9be6f9da7b2",
+        "type": "template",
+        "z": "42323f5cd5a1a54b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I will {{payload}} now !",
+        "output": "str",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "d90dedefa169d85c"
+            ]
+        ]
+    },
+    {
+        "id": "e406ee288738b18b",
+        "type": "ui_button",
+        "z": "42323f5cd5a1a54b",
+        "name": "",
+        "group": "028fd3e511a2e49b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "stop",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "9208b0fdcc8341f6"
+            ]
+        ]
+    },
+    {
+        "id": "d5b1dfdefb79cf52",
+        "type": "comment",
+        "z": "42323f5cd5a1a54b",
+        "name": "Control buttons",
+        "info": "",
+        "x": 140,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3cdb960af67f55e0",
+        "type": "comment",
+        "z": "42323f5cd5a1a54b",
+        "name": "Device receiving command",
+        "info": "",
+        "x": 170,
+        "y": 280,
         "wires": []
     },
     {
@@ -2002,7 +2380,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 1090,
@@ -2234,6 +2613,7 @@
         "id": "1b26f81987873089",
         "type": "mqtt out",
         "z": "dedfba256312356e",
+        "d": true,
         "name": "",
         "topic": "nnnpooh/light",
         "qos": "0",
@@ -2363,8 +2743,8 @@
         "topic": "",
         "payload": "LINE",
         "payloadType": "env",
-        "x": 450,
-        "y": 220,
+        "x": 170,
+        "y": 80,
         "wires": [
             [
                 "ddbd2ad8e14cc9a6"
@@ -2383,8 +2763,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 220,
+        "x": 440,
+        "y": 80,
         "wires": []
     },
     {
@@ -2414,8 +2794,8 @@
         "topic": "",
         "payload": "{\"message\":\"Hello\"}",
         "payloadType": "json",
-        "x": 450,
-        "y": 320,
+        "x": 190,
+        "y": 180,
         "wires": [
             [
                 "1c4b6473ef7f4712"
@@ -2433,8 +2813,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 720,
-        "y": 320,
+        "x": 460,
+        "y": 180,
         "wires": [
             []
         ]
@@ -2452,8 +2832,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 280,
+        "x": 810,
+        "y": 60,
         "wires": []
     },
     {
@@ -2480,8 +2860,8 @@
         "admin": "e69e69a9959692c8",
         "snapHandler": "",
         "eject": false,
-        "x": 450,
-        "y": 280,
+        "x": 330,
+        "y": 60,
         "wires": [
             [
                 "f87ad3650245326b"
@@ -2513,8 +2893,8 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 440,
-        "y": 380,
+        "x": 360,
+        "y": 160,
         "wires": [
             [
                 "62567ed060928356"
@@ -2532,8 +2912,8 @@
         "operation": "set",
         "admin": "e69e69a9959692c8",
         "eject": false,
-        "x": 930,
-        "y": 380,
+        "x": 850,
+        "y": 160,
         "wires": [
             []
         ]
@@ -2549,8 +2929,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
-        "y": 380,
+        "x": 600,
+        "y": 160,
         "wires": [
             [
                 "5ceee284919488f6"
@@ -2568,8 +2948,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
-        "y": 280,
+        "x": 580,
+        "y": 60,
         "wires": [
             [
                 "cd5770bc81803a34"
@@ -2591,7 +2971,7 @@
         "authType": "",
         "senderr": false,
         "x": 330,
-        "y": 160,
+        "y": 120,
         "wires": [
             [
                 "aa1e8c4f377dfaae"
@@ -2620,7 +3000,7 @@
         "payload": "{\"cmu_id\":\"111222333\",\"code\":\"xxxx\"}",
         "payloadType": "json",
         "x": 130,
-        "y": 160,
+        "y": 120,
         "wires": [
             [
                 "8fe770a2e6183dd2"
@@ -2641,7 +3021,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 530,
-        "y": 160,
+        "y": 120,
         "wires": []
     },
     {
@@ -2651,7 +3031,7 @@
         "name": "Attendance",
         "info": "",
         "x": 130,
-        "y": 100,
+        "y": 60,
         "wires": []
     }
 ]
