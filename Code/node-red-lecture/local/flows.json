@@ -305,7 +305,9 @@
             "b17dc552f66360b0"
         ],
         "x": 74,
-        "y": 59
+        "y": 59,
+        "w": 752,
+        "h": 142
     },
     {
         "id": "3aeb67bbf7ebc16c",
@@ -326,9 +328,7 @@
             "2b6cd4112e3a1d9f"
         ],
         "x": 54,
-        "y": 39,
-        "w": 472,
-        "h": 142
+        "y": 39
     },
     {
         "id": "861a09986a42fb22",
@@ -349,9 +349,7 @@
             "b7d1ea5e6a411309"
         ],
         "x": 54,
-        "y": 259,
-        "w": 452,
-        "h": 142
+        "y": 259
     },
     {
         "id": "0e464c3096fa78b4",
@@ -2465,7 +2463,6 @@
         "id": "b662ca0d9a6fffc0",
         "type": "mqtt in",
         "z": "dedfba256312356e",
-        "d": true,
         "name": "",
         "topic": "nnnpooh/sensors",
         "qos": "2",
@@ -2555,7 +2552,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 530,
+        "x": 550,
         "y": 140,
         "wires": [
             [
@@ -2579,7 +2576,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 890,
+        "x": 910,
         "y": 140,
         "wires": [
             [
@@ -2600,7 +2597,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1090,
+        "x": 1110,
         "y": 140,
         "wires": []
     },
@@ -2615,7 +2612,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
+        "x": 740,
         "y": 140,
         "wires": [
             [
@@ -2644,7 +2641,6 @@
         "id": "2294d76429384be1",
         "type": "Firestore in",
         "z": "dedfba256312356e",
-        "d": true,
         "name": "Read",
         "collection": "incident",
         "group": false,
@@ -2829,7 +2825,6 @@
         "id": "1b26f81987873089",
         "type": "mqtt out",
         "z": "dedfba256312356e",
-        "d": true,
         "name": "",
         "topic": "nnnpooh/light",
         "qos": "0",
@@ -2957,7 +2952,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "LINE",
+        "payload": "LINE_NOTIFY_TOKEN",
         "payloadType": "env",
         "x": 170,
         "y": 80,
