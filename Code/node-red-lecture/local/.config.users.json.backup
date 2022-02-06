@@ -31,6 +31,6 @@
                 "welcome": "2.1.4"
             }
         },
-        "menu-menu-item-sidebar": true
+        "menu-menu-item-sidebar": false
     }
 }

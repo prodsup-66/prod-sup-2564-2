@@ -120,6 +120,14 @@
         "env": []
     },
     {
+        "id": "2822d6ced22c9130",
+        "type": "tab",
+        "label": "Windows Control",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "cd3a1dfe73fbb0b7",
         "type": "group",
         "z": "1252c8c9df17633c",
@@ -305,9 +313,7 @@
             "b17dc552f66360b0"
         ],
         "x": 74,
-        "y": 59,
-        "w": 752,
-        "h": 142
+        "y": 59
     },
     {
         "id": "3aeb67bbf7ebc16c",
@@ -3244,5 +3250,54 @@
         "x": 130,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "5456ae4367822ebd",
+        "type": "inject",
+        "z": "2822d6ced22c9130",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "8914d97cf0b8a065"
+            ]
+        ]
+    },
+    {
+        "id": "8914d97cf0b8a065",
+        "type": "exec",
+        "z": "2822d6ced22c9130",
+        "command": "start msedge cmu.ac.th",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [],
+            [],
+            []
+        ]
     }
 ]
