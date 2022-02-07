@@ -128,6 +128,14 @@
         "env": []
     },
     {
+        "id": "4742e18bcfcf70df",
+        "type": "tab",
+        "label": "Timeout",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "cd3a1dfe73fbb0b7",
         "type": "group",
         "z": "1252c8c9df17633c",
@@ -3299,5 +3307,206 @@
             [],
             []
         ]
+    },
+    {
+        "id": "eb78b74c1d17fea8",
+        "type": "timeout",
+        "z": "4742e18bcfcf70df",
+        "d": true,
+        "name": "My Timeout",
+        "outtopic": "test",
+        "outsafe": "On",
+        "outwarning": "About to off",
+        "outunsafe": "Off",
+        "warning": "2",
+        "timer": "5",
+        "repeat": false,
+        "again": false,
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "9fd3bbbb649ad77b"
+            ]
+        ]
+    },
+    {
+        "id": "0ec9680154c76e48",
+        "type": "inject",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "test",
+        "payload": "safe",
+        "payloadType": "str",
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "eb78b74c1d17fea8"
+            ]
+        ]
+    },
+    {
+        "id": "9fd3bbbb649ad77b",
+        "type": "debug",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d1e5406972ca7b1f",
+        "type": "inject",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "test",
+        "payload": "unsafe",
+        "payloadType": "str",
+        "x": 180,
+        "y": 540,
+        "wires": [
+            [
+                "eb78b74c1d17fea8"
+            ]
+        ]
+    },
+    {
+        "id": "0b6a3befc2f2c505",
+        "type": "inject",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "safe",
+        "payloadType": "str",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "50861b9fd7905c23"
+            ]
+        ]
+    },
+    {
+        "id": "50861b9fd7905c23",
+        "type": "mqtt out",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "topic": "test/onoff",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5d3245bfbfc17903",
+        "x": 400,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "3e1e645b2fd6afd4",
+        "type": "mqtt in",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "topic": "test/onoff",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "5d3245bfbfc17903",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "e805d8e8e428a625"
+            ]
+        ]
+    },
+    {
+        "id": "e805d8e8e428a625",
+        "type": "timeout",
+        "z": "4742e18bcfcf70df",
+        "name": "My Timeout",
+        "outtopic": "",
+        "outsafe": "Machine Running",
+        "outwarning": "Machine about to turn off",
+        "outunsafe": "Machine Turn Off",
+        "warning": "3",
+        "timer": "8",
+        "repeat": false,
+        "again": false,
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "ca2b1a1377b58723"
+            ]
+        ]
+    },
+    {
+        "id": "ca2b1a1377b58723",
+        "type": "debug",
+        "z": "4742e18bcfcf70df",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 220,
+        "wires": []
     }
 ]
