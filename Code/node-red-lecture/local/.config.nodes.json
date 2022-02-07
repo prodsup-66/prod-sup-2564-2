@@ -703,5 +703,43 @@
                 "file": "F:\\Work\\Coding\\Class\\prod-sup-2564-2\\Code\\node-red-lecture\\local\\node_modules\\node-red-contrib-timeout\\timeout.js"
             }
         }
+    },
+    "node-red-contrib-hourglass": {
+        "name": "node-red-contrib-hourglass",
+        "version": "1.5.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "hourglass": {
+                "name": "hourglass",
+                "types": [
+                    "hourglass"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-hourglass",
+                "file": "F:\\Work\\Coding\\Class\\prod-sup-2564-2\\Code\\node-red-lecture\\local\\node_modules\\node-red-contrib-hourglass\\hourglass.js"
+            }
+        }
+    },
+    "node-red-contrib-ui-countdown-timer-switch": {
+        "name": "node-red-contrib-ui-countdown-timer-switch",
+        "version": "1.4.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "countdown_timer_switch": {
+                "name": "countdown_timer_switch",
+                "types": [
+                    "ui_countdown_timer_switch"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ui-countdown-timer-switch",
+                "file": "F:\\Work\\Coding\\Class\\prod-sup-2564-2\\Code\\node-red-lecture\\local\\node_modules\\node-red-contrib-ui-countdown-timer-switch\\countdown-timer-switch.js"
+            }
+        }
     }
 }

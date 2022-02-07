@@ -684,5 +684,43 @@
                 "file": "F:\\Work\\Coding\\Class\\prod-sup-2564-2\\Code\\node-red-lecture\\node_modules\\node-red-contrib-cloud-firestore\\src\\Write\\Write.js"
             }
         }
+    },
+    "node-red-contrib-timeout": {
+        "name": "node-red-contrib-timeout",
+        "version": "1.1.5",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "timeout": {
+                "name": "timeout",
+                "types": [
+                    "timeout"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-timeout",
+                "file": "F:\\Work\\Coding\\Class\\prod-sup-2564-2\\Code\\node-red-lecture\\local\\node_modules\\node-red-contrib-timeout\\timeout.js"
+            }
+        }
+    },
+    "node-red-contrib-hourglass": {
+        "name": "node-red-contrib-hourglass",
+        "version": "1.5.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "hourglass": {
+                "name": "hourglass",
+                "types": [
+                    "hourglass"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-hourglass",
+                "file": "F:\\Work\\Coding\\Class\\prod-sup-2564-2\\Code\\node-red-lecture\\local\\node_modules\\node-red-contrib-hourglass\\hourglass.js"
+            }
+        }
     }
 }
