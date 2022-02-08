@@ -4167,14 +4167,123 @@
         "id": "b709041937d220f3",
         "type": "hourglass",
         "z": "4b203693849dfbbd",
-        "d": true,
         "name": "",
-        "persistId": "",
+        "persistId": "1234",
         "humanizeLocale": "",
-        "x": 190,
-        "y": 120,
+        "x": 400,
+        "y": 240,
         "wires": [
-            []
+            [
+                "366c5f5d63e8430f"
+            ]
+        ]
+    },
+    {
+        "id": "e6ca5871a2713849",
+        "type": "inject",
+        "z": "4b203693849dfbbd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "command",
+                "v": "start",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "b709041937d220f3"
+            ]
+        ]
+    },
+    {
+        "id": "366c5f5d63e8430f",
+        "type": "debug",
+        "z": "4b203693849dfbbd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "394895ac914ffda5",
+        "type": "inject",
+        "z": "4b203693849dfbbd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "command",
+                "v": "stop",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "b709041937d220f3"
+            ]
+        ]
+    },
+    {
+        "id": "b470b47a4a0cde8f",
+        "type": "inject",
+        "z": "4b203693849dfbbd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "command",
+                "v": "status",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "b709041937d220f3"
+            ]
         ]
     },
     {
